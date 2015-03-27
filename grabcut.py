@@ -5,8 +5,7 @@ import argparse
 ap = argparse.ArgumentParser()
 ap.add_argument("-i", "--image", required = True,
 help = "Resim Yolu")
-ap.add_argument("-t", "--threshold", type = int, default = 128,
-help = "Threshold value")
+
 args = vars(ap.parse_args())
 
 image = cv2.imread(args["image"])
