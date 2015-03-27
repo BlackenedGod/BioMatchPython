@@ -17,5 +17,11 @@ connection.request('GET', '/1/classes/Pictures/', json.dumps({
 result = json.loads(connection.getresponse().read())
 dump = json.dumps(result)
 
-urlInfo = result['results'][0][canakYaprak]['url']
+
+
+print dump
+
+urlInfo = result['results'][0][tacYaprak]['url']
+
+print urlInfo
 response = urllib.urlretrieve(urlInfo,"TestImg/pic2.jpg")
