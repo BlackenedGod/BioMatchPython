@@ -1,11 +1,16 @@
 import numpy as np
 import cv2
+import argparse
 
-src = '/home/kerem/OpenCV Plant Dataset/jpg/image_0009.jpg'
-src2 = 'TestImg/test.jpg'
-src3 = '/var/www/html/red-dahlia.png'
-image = cv2.imread(src3)
-image2 = cv2.imread(src3)
+ap = argparse.ArgumentParser()
+ap.add_argument("-i", "--image", required = True,
+help = "Resim Yolu")
+ap.add_argument("-t", "--threshold", type = int, default = 128,
+help = "Threshold value")
+args = vars(ap.parse_args())
+
+image = cv2.imread(args["image"])
+image2 = cv2.imread(args["image"])
 mask = np.zeros(image.shape[:2],np.uint8)
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 bgdModel = np.zeros((1,65),np.float64)
