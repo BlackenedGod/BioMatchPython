@@ -24,4 +24,4 @@ print dump
 urlInfo = result['results'][0][tacYaprak]['url']
 
 print urlInfo
-response = urllib.urlretrieve(urlInfo,"TestImg/pic2.jpg")
+response = urllib.urlretrieve(urlInfo, "TestImg/pic2.jpg")
