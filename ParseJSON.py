@@ -1,5 +1,6 @@
 import json, httplib, urllib
 import datetime
+import Image
 
 class parseJSON:
 
@@ -76,6 +77,10 @@ instance = parseJSON()
 
 instance.downloadLastImageCanak()
 instance.downloadLastImageTac()
+
+picCanak = Image.open("TestImg/picCanak.jpg")
+picTac = Image.open("TestImg/picTac.jpg")
+
 
 
 
