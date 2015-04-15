@@ -1,5 +1,6 @@
 import json, httplib, urllib
 import datetime
+import time
 import Image
 import cv2
 
@@ -12,8 +13,8 @@ class parseJSON:
         self.resultsString = 'results'
         self.createdAtString = 'createdAt'
         self.urlString = 'url'
-        self.canakURLPath = "TestImg/picCanak.jpg"
-        self.tacURLPath = "TestImg/picTac.jpg"
+        self.canakURLPath = "TestImg/picCanak.png"
+        self.tacURLPath = "TestImg/picTac.png"
         try:
             self.connection = httplib.HTTPSConnection("api.parse.com", 443)
             self.connection.connect()
@@ -76,13 +77,14 @@ class parseJSON:
 instance = parseJSON()
 
 instance.downloadLastImageCanak()
+time.sleep(1)
 instance.downloadLastImageTac()
 
-picTac = cv2.imread("TestImg/picTac.jpg")
-picCanak = cv2.imread("TestImg/picCanak.jpg")
+#picTac = cv2.imread("TestImg/picTac.png")
+#picCanak = cv2.imread("TestImg/picCanak.png")
 
-cv2.imshow("Tac Yaprak", picTac)
-cv2.imshow("Canak Yaprak", picCanak)
+#cv2.imshow("Tac Yaprak", picTac)
+#cv2.imshow("Canak Yaprak", picCanak)
 
 cv2.waitKey(0)
 
