@@ -73,7 +73,6 @@ class parseJSON:
             print 'Tac Yaprak Indirildi .\n'
 
 
-
 instance = parseJSON()
 
 instance.downloadLastImageCanak()

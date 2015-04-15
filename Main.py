@@ -1,10 +1,10 @@
 __author__ = 'altug'
 
-import ParseJSON
+from ParseJSON import parseJSON
 import MaskingClass
 
 #******************Test Edilecek Fotonun Tac ve Canagini Indir*************************
-jsoninstance = ParseJSON.parseJSON()
+jsoninstance = parseJSON()
 
 jsoninstance.downloadLastImageTac()
 jsoninstance.downloadLastImageCanak()
@@ -12,9 +12,11 @@ jsoninstance.downloadLastImageCanak()
 
 tacImagePath = "TestImg/picTac.jpg"
 canakImagePath = "TestImg/picCanak.jpg"
-maskFilePath = "MaskImg/"+"mask_", jsoninstance.getNowTime()
+now = str(jsoninstance.getNowTime())
+
+maskFilePath = "MaskImg/"+"mask_"+now
 
 #******************Tac ve Canak icin maske cikar MaskImg ye kayit et*******************
-maskingTacinstance = MaskingClass.maskingClass(maskFilePath, tacImagePath)
-maskingCanakinstance = MaskingClass.maskingClass(maskFilePath, canakImagePath)
+maskingTacinstance = MaskingClass.MaskingClass(maskFilePath, tacImagePath)
+maskingCanakinstance = MaskingClass.MaskingClass(maskFilePath, canakImagePath)
 #**************************************************************************************
