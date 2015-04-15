@@ -13,7 +13,7 @@ def Masking():
     #Burada grabCut metodu icin gerekli parametreler hazirlaniyor
     bgdModel = np.zeros((1, 65), np.float64)
     fgdModel = np.zeros((1, 65), np.float64)
-    mask = np.zeros(image.shape[:2],np.uint8)
+    mask = np.zeros(image.shape[:2], np.uint8)
 
     #grabCut icin thresholding islemi
     (_, new_mask) = cv2.threshold(gray, 128, 255, cv2.THRESH_BINARY)
