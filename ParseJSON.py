@@ -1,6 +1,7 @@
 import json, httplib, urllib
 import datetime
 import Image
+import cv2
 
 class parseJSON:
 
@@ -78,8 +79,13 @@ instance = parseJSON()
 instance.downloadLastImageCanak()
 instance.downloadLastImageTac()
 
-picCanak = Image.open("TestImg/picCanak.jpg")
-picTac = Image.open("TestImg/picTac.jpg")
+picTac = cv2.imread("TestImg/picTac.jpg")
+picCanak = cv2.imread("TestImg/picCanak.jpg")
+
+cv2.imshow("Tac Yaprak", picTac)
+cv2.imshow("Canak Yaprak", picCanak)
+
+cv2.waitKey(0)
 
 
 
