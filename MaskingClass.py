@@ -16,6 +16,7 @@ class maskingClass():
         cv2.imwrite(self.file_path, new_mask)
         print self.file_path , '\n', self.file_name
         cv2.imshow(new_mask)
+        cv2.waitKey(0)
 
 
 
