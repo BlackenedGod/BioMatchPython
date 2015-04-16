@@ -10,8 +10,8 @@ import argparse
 import glob
 import cv2
 
-imagePaths = sorted(glob.glob("TestImg/*.png"))
-maskPaths = sorted(glob.glob("MaskImg/*.png"))
+imagePaths = sorted(glob.glob("dataset/images/*.png"))
+maskPaths = sorted(glob.glob("dataset/masks/*.png"))
 imagePath = "TestImg/picTac.png"
 
 data = []
@@ -20,7 +20,7 @@ target = []
 desc = RGBHistogram([8, 8, 8])
 
 counter = 0
-for maskPath in maskPaths:
+for imagePath, maskPath in zip(imagePaths, maskPaths):
     image = cv2.imread(imagePath)
     mask = cv2.imread(maskPath)
     mask = cv2.cvtColor(mask, cv2.COLOR_BGR2GRAY)
@@ -29,6 +29,7 @@ for maskPath in maskPaths:
     features = desc.describe(image, mask)
 
     data.append(features)
-    target.append(imagePath)
+    target.append(imagePath.split('_')[-2])
+    print target, '\n'
 
 print data, '\n', target
