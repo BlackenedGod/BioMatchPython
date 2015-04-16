@@ -10,8 +10,8 @@ import argparse
 import glob
 import cv2
 
-imagePaths = sorted(glob.glob("dataset/images/*.png"))
-maskPaths = sorted(glob.glob("dataset/masks/*.png"))
+imagePaths = sorted(glob.glob("TestImg/*.png"))
+maskPaths = sorted(glob.glob("MaskImg/*.png"))
 imagePath = "TestImg/picTac.png"
 
 data = []
@@ -30,7 +30,7 @@ for imagePath, maskPath in zip(imagePaths, maskPaths):
 
     data.append(features)
     target.append(imagePath.split('_')[-2])
-    print target, '\n'
+    #print target, '\n'
 
 targetNames = np.unique(target)
 le = LabelEncoder()
@@ -42,3 +42,20 @@ model = RandomForestClassifier(n_estimators=25, random_state=84)
 model.fit(trainData, trainTarget)
 
 print classification_report(testTarget, model.predict(testData), target_names=targetNames)
+
+for i in range(0, 2):
+    imagePath = imagePaths[i]
+    maskPath = maskPaths[i]
+
+    image = cv2.imread(imagePath)
+    mask = cv2.imread(maskPath)
+    mask = cv2.cvtColor(mask, cv2.COLOR_BGR2GRAY)
+
+    features = desc.describe(image, mask)
+
+    flower = le.inverse_transform(model.predict(features))[0]
+
+    print maskPath
+    print "I think this flower is a %s" % (flower.upper())
+    cv2.imshow("image", image)
+    cv2.waitKey(0)

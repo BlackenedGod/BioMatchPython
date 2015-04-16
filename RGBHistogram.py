@@ -14,8 +14,8 @@ class RGBHistogram:
 
 instance = RGBHistogram([8,8,8])
 
-image = cv2.imread("TestImg/crocus-1.png")
-instance.describe(image)
+#image = cv2.imread("TestImg/crocus-1.png")
+#instance.describe(image)
 
 
 
