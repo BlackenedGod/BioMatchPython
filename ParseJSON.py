@@ -74,11 +74,11 @@ class parseJSON:
             print 'Tac Yaprak Indirildi .\n'
 
 
-instance = parseJSON()
+#instance = parseJSON()
 
-instance.downloadLastImageCanak()
-time.sleep(1)
-instance.downloadLastImageTac()
+#instance.downloadLastImageCanak()
+#time.sleep(1)
+#instance.downloadLastImageTac()
 
 #picTac = cv2.imread("TestImg/picTac.png")
 #picCanak = cv2.imread("TestImg/picCanak.png")
@@ -86,7 +86,7 @@ instance.downloadLastImageTac()
 #cv2.imshow("Tac Yaprak", picTac)
 #cv2.imshow("Canak Yaprak", picCanak)
 
-cv2.waitKey(0)
+#cv2.waitKey(0)
 
 
 
