@@ -32,4 +32,15 @@ for imagePath, maskPath in zip(imagePaths, maskPaths):
     target.append(imagePath.split('_')[-2])
     print target, '\n'
 
-print data, '\n', target
+targetNames = np.unique(target)
+le = LabelEncoder()
+target = le.fit_transform(target)
+
+(trainData, testData, trainTarget, testTarget) = train_test_split
+
+(data, target, test_size) = 0.3, random_state = 42)
+
+model = RandomForestClassifier(n_estimators=25, random_state=84)
+model.fit(trainData, trainTarget)
+
+print classification_report(testTarget, model.predict(testData), target_names=targetNames)
