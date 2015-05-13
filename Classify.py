@@ -10,8 +10,8 @@ import argparse
 import glob
 import cv2
 
-imagePaths = sorted(glob.glob("TestImg/*.png"))
-maskPaths = sorted(glob.glob("MaskImg/*.png"))
+imagePaths = sorted(glob.glob("dataset/images/*.png"))
+maskPaths = sorted(glob.glob("dataset/masks/*.png"))
 imagePath = "TestImg/picTac.png"
 
 data = []
@@ -24,8 +24,7 @@ for imagePath, maskPath in zip(imagePaths, maskPaths):
     image = cv2.imread(imagePath)
     mask = cv2.imread(maskPath)
     mask = cv2.cvtColor(mask, cv2.COLOR_BGR2GRAY)
-    counter += 1
-    print counter
+
     features = desc.describe(image, mask)
 
     data.append(features)
@@ -43,7 +42,7 @@ model.fit(trainData, trainTarget)
 
 print classification_report(testTarget, model.predict(testData), target_names=targetNames)
 
-for i in range(0, 2):
+for i in np.random.choice(np.arange(0, len(imagePaths)), 10):
     imagePath = imagePaths[i]
     maskPath = maskPaths[i]
 
@@ -56,6 +55,8 @@ for i in range(0, 2):
     flower = le.inverse_transform(model.predict(features))[0]
 
     print maskPath
+    print imagePath
     print "I think this flower is a %s" % (flower.upper())
     cv2.imshow("image", image)
+    cv2.imshow("mask", mask)
     cv2.waitKey(0)

@@ -6,7 +6,7 @@ import numpy as np
 
 def Masking():
 
-    file_name = "TestImg/crocus-1.png"
+    file_name = "TestImg/3_3.jpg"
     image = cv2.imread(file_name)
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
