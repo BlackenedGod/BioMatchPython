@@ -1,0 +1,7 @@
+numpy==1.9.0
+sklearn==0.15.2
+json==2.0.9
+urllib==1.17
+cv2
+datetime
+
