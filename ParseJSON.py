@@ -3,6 +3,7 @@ import datetime
 import time
 import Image
 import cv2
+from MaskingClass import maskingClass
 
 class parseJSON:
 
@@ -13,13 +14,18 @@ class parseJSON:
         self.resultsString = 'results'
         self.createdAtString = 'createdAt'
         self.urlString = 'url'
-        self.canakURLPath = "TestImg/picCanak.png"
-        self.tacURLPath = "TestImg/picTac.png"
+        self.canakURLPath = "TestImg/picCanak"
+        self.tacURLPath = "TestImg/picTac"
+        self.locationParam = urllib.urlencode({"where": json.dumps({
+            "location": {
+                "$exists" : True
+            }
+        })})
         try:
             self.connection = httplib.HTTPSConnection("api.parse.com", 443)
             self.connection.connect()
 
-            self.connection.request('GET', '/1/classes/Pictures/', json.dumps({
+            self.connection.request('GET', '/1/classes/Pictures?%s' % self.locationParam, json.dumps({
             }), {
                 "X-Parse-Application-Id": "HgrrtDO2dnazkQCPY59MR82ERhiamS5b1LTXBit8",
                 "X-Parse-REST-API-Key": "hKSwFIi8Y6CrijPpXUABQSrLj5TMVekMwqk2I98I",
@@ -68,10 +74,32 @@ class parseJSON:
 
         print self.lastdataIndex + 1, 'Kayit Basari ile Bulundu .'
         self.urlInfo = self.result[self.resultsString][self.lastdataIndex][self.tacYaprakString][self.urlString]
-        print '\nLast Tac Image Date :', datetime.datetime.strptime(self.result[self.resultsString][self.lastdataIndex][self.createdAtString], "%Y-%m-%dT%H:%M:%S.%fZ").strftime("%Y-%m-%d %H:%M:%S.%f"), '\n'
+        dateTimePath = datetime.datetime.strptime(self.result[self.resultsString][self.lastdataIndex][self.createdAtString], "%Y-%m-%dT%H:%M:%S.%fZ").strftime("%Y-%m-%d %H:%M:%S.%f")
+        print '\nLast Tac Image Date :', dateTimePath, '\n'
         response = urllib.urlretrieve(self.urlInfo, self.tacURLPath)
         if(response != None):
             print 'Tac Yaprak Indirildi .\n'
+
+    def downloadAll(self):
+
+        length = len(self.JSONObjectresult)
+
+        for i in range(0, length):
+
+            urlInfoTac = self.result[self.resultsString][i][self.tacYaprakString][self.urlString]
+            urlInfoCanak = self.result[self.resultsString][i][self.canakYaprakString][self.urlString]
+            dateTimePath = datetime.datetime.strptime(self.result[self.resultsString][i][self.createdAtString], "%Y-%m-%dT%H:%M:%S.%fZ").strftime("%Y-%m-%d %H:%M:%S.%f")
+            urllib.urlretrieve(urlInfoTac, self.tacURLPath+dateTimePath+".png")
+            urllib.urlretrieve(urlInfoCanak, self.canakURLPath+dateTimePath+".png")
+            maskFilePathTac = "MaskImg/"+"mask_tac_"+str(i)+".png"
+            maskFilePathCanak = "MaskImg/"+"mask_canak_"+str(i)+".png"
+            maskingInstanceTac = maskingClass(maskFilePathTac, self.tacURLPath+dateTimePath+".png")
+            maskingInstanceCanak = maskingClass(maskFilePathCanak, self.canakURLPath+dateTimePath+".png")
+
+
+
+
+
 
 
 #instance = parseJSON()

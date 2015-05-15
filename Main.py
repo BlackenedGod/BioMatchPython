@@ -7,9 +7,10 @@ import MaskingClass
 #******************Test Edilecek Fotonun Tac ve Canagini Indir*************************
 jsoninstance = parseJSON()
 
-jsoninstance.downloadLastImageTac()
-time.sleep(1)
-jsoninstance.downloadLastImageCanak()
+#jsoninstance.downloadLastImageTac()
+#time.sleep(1)
+#jsoninstance.downloadLastImageCanak()
+jsoninstance.downloadAll()
 #**************************************************************************************
 
 tacImagePath = "TestImg/picTac.png"
