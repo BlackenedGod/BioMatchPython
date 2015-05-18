@@ -20,6 +20,6 @@ now = str(jsoninstance.getNowTime())
 maskFilePathTac = "MaskImg/"+"mask_tac_"+now+".png"
 maskFilePathCanak = "MaskImg/"+"mask_canak_"+now+".png"
 #******************Tac ve Canak icin maske cikar MaskImg ye kayit et*******************
-maskingTacinstance = MaskingClass.maskingClass(maskFilePathTac, tacImagePath)
-maskingCanakinstance = MaskingClass.maskingClass(maskFilePathCanak, canakImagePath)
+#maskingTacinstance = MaskingClass.maskingClass(maskFilePathTac, tacImagePath)
+#maskingCanakinstance = MaskingClass.maskingClass(maskFilePathCanak, canakImagePath)
 #**************************************************************************************
