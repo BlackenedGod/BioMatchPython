@@ -19,6 +19,9 @@ img = cv2.drawKeypoints(image, fastKp, outImage=image, color=(0, 0, 255))
 (minX, minY) = fastKp[0].pt
 (maxX, maxY) = fastKp[len(fastKp)-1].pt
 
+
+(rowImage, colImage) = image.shape
+
 for i in range(0, len(fastKp)):
     (x, y) = fastKp[i].pt
 
@@ -59,7 +62,12 @@ for i in range(0, len(fastKp)):
 distanceX = maxX - minX
 distanceY = maxY - minY
 
+distanceMean = (distanceX + distanceY) / 2
+
 print "Tac Yaprak uzunlugu ya ", distanceX, "ya da ", distanceY, "pixeldir"
+
+
+#realSizeOfObject = (focalLength * distanceToObject * colImage) / (distanceY * sensorHeigth)
 
 
 cv2.namedWindow("fast", cv2.WINDOW_NORMAL)
