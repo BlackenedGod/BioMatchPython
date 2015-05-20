@@ -11,8 +11,9 @@ class maskingClass():
         self.file_name = file_name
         self.image = cv2.imread(self.file_name)
         self.gray = cv2.cvtColor(self.image, cv2.COLOR_BGR2GRAY)
+        self.blur = cv2.GaussianBlur(self.gray, (5, 5), 0)
 
-        (_, new_mask) = cv2.threshold(self.gray, 128, 255, cv2.THRESH_BINARY)
+        (_, new_mask) = cv2.threshold(self.blur, 0, 255, cv2.THRESH_BINARY+cv2.THRESH_OTSU)
         cv2.imwrite(self.file_path, new_mask)
         print 'Basari ile maskelendi -->', self.file_path, '\n'
 
