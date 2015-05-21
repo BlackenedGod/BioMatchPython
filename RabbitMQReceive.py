@@ -4,7 +4,7 @@ import logging
 logging.basicConfig()
 import pika
 
-connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
+connection = pika.BlockingConnection(pika.ConnectionParameters('188.166.67.19'))
 
 channel = connection.channel()
 
