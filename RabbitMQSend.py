@@ -8,10 +8,10 @@ connection = pika.BlockingConnection(pika.ConnectionParameters('188.166.67.19'))
 
 channel = connection.channel()
 
-channel.queue_declare(queue='idob')
+channel.queue_declare(queue='idobj')
 
 channel.basic_publish(exchange='',#Kuyruk ismine gore convert edicek mesaji yollayacak bos default.
-                      routing_key='idob',
+                      routing_key='idobj',
                       body='FOTO URL !')
 
 print " [x] Sent 'Burada URL olacak !'"
