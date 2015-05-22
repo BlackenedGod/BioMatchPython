@@ -4,14 +4,14 @@ import logging
 logging.basicConfig()
 import pika
 
-connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
+connection = pika.BlockingConnection(pika.ConnectionParameters('188.166.67.19'))
 
 channel = connection.channel()
 
-channel.queue_declare(queue='url')
+channel.queue_declare(queue='obid')
 
 channel.basic_publish(exchange='',#Kuyruk ismine gore convert edicek mesaji yollayacak bos default.
-                      routing_key='url',
+                      routing_key='obid',
                       body='FOTO URL !')
 
 print " [x] Sent 'Burada URL olacak !'"
