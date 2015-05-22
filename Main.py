@@ -10,7 +10,9 @@ jsoninstance = parseJSON()
 #jsoninstance.downloadLastImageTac()
 #time.sleep(1)
 #jsoninstance.downloadLastImageCanak()
-jsoninstance.downloadAll()
+#jsoninstance.downloadAll()
+#jsoninstance.focalLengthSensorSizeInfo()
+jsoninstance.printAllResult()
 #**************************************************************************************
 
 tacImagePath = "TestImg/picTac.png"
