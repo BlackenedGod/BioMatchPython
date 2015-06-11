@@ -114,6 +114,7 @@ class parseJSON:
             maskingInstanceCanak = maskingClass(maskFilePathCanak, self.canakURLPath+dateTimePath+".png")
 
     def downloadSpecificObject(self, objID):
+        self.objIDString = objID
         length = len(self.JSONObjectresult)
         retval = 0
         for i in range(0, length):
