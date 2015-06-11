@@ -7,13 +7,13 @@ class Main:
     def __init__(self):
         print "Main Started"
 
-    def jsonStart(self):
+    def jsonStart(self, objectid):
         #******************Test Edilecek Fotonun Tac ve Canagini Indir*************************
         jsoninstance = parseJSON()
         #jsoninstance.downloadLastImageTac()
         #time.sleep(1)
         #jsoninstance.downloadLastImageCanak()
-        jsoninstance.downloadAll()
+        jsoninstance.downloadSpecificObject(objectid)
     #**************************************************************************************
         tacImagePath = "TestImg/picTac.png"
         canakImagePath = "TestImg/picCanak.png"
