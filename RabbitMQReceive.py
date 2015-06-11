@@ -13,7 +13,7 @@ channel.queue_declare(queue='idobj')
 
 def callback(ch, method, properties, body):
     print " [x] Received %r" % (body,)
-    mainInstance = Main.Main
+    mainInstance = Main.Main()
     mainInstance.jsonStart()
 
 
