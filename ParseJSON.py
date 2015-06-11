@@ -1,8 +1,6 @@
 import json, httplib, urllib
 import datetime
-import time
-import Image
-import cv2
+
 from MaskingClass import maskingClass
 
 class parseJSON:
