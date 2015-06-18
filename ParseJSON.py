@@ -137,7 +137,7 @@ class parseJSON:
                 maskFilePathCanak = "MaskImg/"+"mask_canak_"+str(i)+".png"
                 focalLength = self.result[self.resultsString][i][self.focalLengthString]
                 sensorSize = self.result[self.resultsString][i][self.sensorSizeString]
-                CalcDistance().calcDistance(focalLength=focalLength, sensorHeigth=sensorSize, distanceToObject=10)
+                #CalcDistance().calcDistance(focalLength=focalLength, sensorHeigth=sensorSize, distanceToObject=10)
                 maskingClass(maskFilePathTac, self.tacURLPath+dateTimePath+".png")
                 maskingClass(maskFilePathCanak, self.canakURLPath+dateTimePath+".png")
                 retval = 1
