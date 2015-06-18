@@ -119,7 +119,6 @@ class parseJSON:
         retval = 0
         for i in range(0, length):
             objectID = self.result[self.resultsString][i][self.objIDString]
-            print objectID, objID
             if objectID == objID:
                 urlInfoTac = self.result[self.resultsString][i][self.tacYaprakString][self.urlString]
                 urlInfoCanak = self.result[self.resultsString][i][self.canakYaprakString][self.urlString]
@@ -135,12 +134,6 @@ class parseJSON:
                 retval = 1
 
         return retval
-
-
-
-
-
-
 
 
 #instance = parseJSON()
