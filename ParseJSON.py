@@ -40,7 +40,7 @@ class parseJSON:
             self.result = json.loads(self.connection.getresponse().read())
             self.dump = json.dumps(self.result) # Komple String sonucu icin .
             self.JSONObjectresult = self.result[self.resultsString] # Tum JSON objeleri icin .
-            print self.JSONObjectresult
+
         except RuntimeError:
             print 'Baglanti Kurulamadi !'
 
@@ -115,6 +115,9 @@ class parseJSON:
             maskingInstanceCanak = maskingClass(maskFilePathCanak, self.canakURLPath+dateTimePath+".png")
 
     def downloadSpecificObject(self, objID):
+
+        print 'Istek geldi bulunursa indirilecek.'
+
         length = len(self.JSONObjectresult)
         retval = 0
         for i in range(0, length):
