@@ -126,6 +126,13 @@ class parseJSON:
                 urlInfoCanak = self.result[self.resultsString][i][self.canakYaprakString][self.urlString]
                 dateTimePath = datetime.datetime.strptime(self.result[self.resultsString][i][self.createdAtString], "%Y-%m-%dT%H:%M:%S.%fZ").strftime("%Y-%m-%d %H:%M:%S.%f")
 
+                responseTac = urllib.urlretrieve(urlInfoTac, self.tacURLPath)
+                if(responseTac != None):
+                    print 'Tac Yaprak Indirildi .\n'
+                responseCanak = urllib.urlretrieve(urlInfoCanak, self.canakURLPath)
+                if(responseCanak != None):
+                    print 'Canak Yaprak Indirildi .\n'
+
                 maskFilePathTac = "MaskImg/"+"mask_tac_"+str(i)+".png"
                 maskFilePathCanak = "MaskImg/"+"mask_canak_"+str(i)+".png"
                 focalLength = self.result[self.resultsString][i][self.focalLengthString]
