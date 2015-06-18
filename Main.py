@@ -13,9 +13,9 @@ class Main:
         #jsoninstance.downloadLastImageTac()
         #time.sleep(1)
         #jsoninstance.downloadLastImageCanak()
-        #jsoninstance.downloadSpecificObject(objectid)
+        jsoninstance.downloadSpecificObject(objectid)
     #**************************************************************************************
-        tacImagePath = "TestImg/picTac.png"
+        '''tacImagePath = "TestImg/picTac.png"
         canakImagePath = "TestImg/picCanak.png"
         now = str(jsoninstance.getNowTime())
 
@@ -23,5 +23,5 @@ class Main:
         maskFilePathCanak = "MaskImg/"+"mask_canak_"+now+".png"
         #******************Tac ve Canak icin maske cikar MaskImg ye kayit et*******************
         #maskingTacinstance = MaskingClass.maskingClass(maskFilePathTac, tacImagePath)
-        #maskingCanakinstance = MaskingClass.maskingClass(maskFilePathCanak, canakImagePath)
+        #maskingCanakinstance = MaskingClass.maskingClass(maskFilePathCanak, canakImagePath)'''
         #**************************************************************************************
