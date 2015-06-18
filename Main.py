@@ -1,5 +1,3 @@
-__author__ = 'altug'
-
 from ParseJSON import parseJSON
 import time
 import MaskingClass
@@ -15,7 +13,7 @@ class Main:
         #jsoninstance.downloadLastImageTac()
         #time.sleep(1)
         #jsoninstance.downloadLastImageCanak()
-        jsoninstance.downloadAll()
+        #jsoninstance.downloadSpecificObject(objectid)
     #**************************************************************************************
         tacImagePath = "TestImg/picTac.png"
         canakImagePath = "TestImg/picCanak.png"

@@ -1,6 +1,9 @@
 import json, httplib, urllib
 import datetime
-
+import time
+import Image
+import cv2
+from CalcDistance import CalcDistance
 from MaskingClass import maskingClass
 
 class parseJSON:
@@ -13,6 +16,11 @@ class parseJSON:
         self.createdAtString = 'createdAt'
         self.urlString = 'url'
         self.canakURLPath = "TestImg/picCanak"
+        self.focalLengthString = "focalLength"
+        self.focalLength = ""
+        self.sensorSize = ""
+        self.objIDString = "objectID"
+        self.sensorSizeString = "sensorSize"
         self.tacURLPath = "TestImg/picTac"
         self.locationParam = urllib.urlencode({"where": json.dumps({
             "location": {
@@ -32,6 +40,7 @@ class parseJSON:
             self.result = json.loads(self.connection.getresponse().read())
             self.dump = json.dumps(self.result) # Komple String sonucu icin .
             self.JSONObjectresult = self.result[self.resultsString] # Tum JSON objeleri icin .
+            print self.JSONObjectresult
         except RuntimeError:
             print 'Baglanti Kurulamadi !'
 
@@ -78,21 +87,55 @@ class parseJSON:
         if(response != None):
             print 'Tac Yaprak Indirildi .\n'
 
+    def focalLengthSensorSizeInfo(self):
+        length = len(self.JSONObjectresult)
+        for i in range(0, length):
+            self.focalLength = self.result[self.resultsString][i][self.focalLengthString]
+            self.sensorSize = self.result[self.resultsString][i][self.sensorSizeString]
+            CalcDistance().calcDistance(focalLength=self.focalLength, sensorHeigth=self.sensorSize, distanceToObject=10)
+
     def downloadAll(self):
 
         length = len(self.JSONObjectresult)
 
         for i in range(0, length):
 
-            urlInfoTac = self.result[self.resultsString][i][self.tacYaprakString][self.urlString]
-            urlInfoCanak = self.result[self.resultsString][i][self.canakYaprakString][self.urlString]
+
+            urlInfoTac = self.result[self.resultsString][i][self.objIDString][self.tacYaprakString][self.urlString]
+            urlInfoCanak = self.result[self.resultsString][i][self.objIDString][self.canakYaprakString][self.urlString]
             dateTimePath = datetime.datetime.strptime(self.result[self.resultsString][i][self.createdAtString], "%Y-%m-%dT%H:%M:%S.%fZ").strftime("%Y-%m-%d %H:%M:%S.%f")
             urllib.urlretrieve(urlInfoTac, self.tacURLPath+dateTimePath+".png")
             urllib.urlretrieve(urlInfoCanak, self.canakURLPath+dateTimePath+".png")
             maskFilePathTac = "MaskImg/"+"mask_tac_"+str(i)+".png"
             maskFilePathCanak = "MaskImg/"+"mask_canak_"+str(i)+".png"
+            focalLength = self.result[self.resultsString][i][self.objIDString][self.focalLengthString]
+            sensorSize = self.result[self.resultsString][i][self.objIDString][self.sensorSizeString]
+            CalcDistance().calcDistance(focalLength=focalLength, sensorHeigth=sensorSize, distanceToObject=10)
             maskingInstanceTac = maskingClass(maskFilePathTac, self.tacURLPath+dateTimePath+".png")
             maskingInstanceCanak = maskingClass(maskFilePathCanak, self.canakURLPath+dateTimePath+".png")
+
+    def downloadSpecificObject(self, objID):
+        length = len(self.JSONObjectresult)
+        retval = 0
+        for i in range(0, length):
+            objectID = self.result[self.resultsString][i][self.objIDString]
+            print objectID, objID
+            if objectID == objID:
+                urlInfoTac = self.result[self.resultsString][i][self.tacYaprakString][self.urlString]
+                urlInfoCanak = self.result[self.resultsString][i][self.canakYaprakString][self.urlString]
+                dateTimePath = datetime.datetime.strptime(self.result[self.resultsString][i][self.createdAtString], "%Y-%m-%dT%H:%M:%S.%fZ").strftime("%Y-%m-%d %H:%M:%S.%f")
+
+                maskFilePathTac = "MaskImg/"+"mask_tac_"+str(i)+".png"
+                maskFilePathCanak = "MaskImg/"+"mask_canak_"+str(i)+".png"
+                focalLength = self.result[self.resultsString][i][self.focalLengthString]
+                sensorSize = self.result[self.resultsString][i][self.sensorSizeString]
+                CalcDistance().calcDistance(focalLength=focalLength, sensorHeigth=sensorSize, distanceToObject=10)
+                maskingClass(maskFilePathTac, self.tacURLPath+dateTimePath+".png")
+                maskingClass(maskFilePathCanak, self.canakURLPath+dateTimePath+".png")
+                retval = 1
+
+        return retval
+
 
 
 
