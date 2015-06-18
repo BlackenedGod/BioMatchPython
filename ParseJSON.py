@@ -10,10 +10,10 @@ class parseJSON:
 
     def __init__(self):
         #Bu Strinlerin tanimlanmasi ileride degisebilecekleri anlamina gelir JSON objelerinin alanlarinin isimleridir.
-        self.tacYaprakString = 'TacYaprak'
-        self.canakYaprakString = 'CanakYaprak'
-        self.resultsString = 'results'
-        self.createdAtString = 'createdAt'
+        self.tacYaprakString = "TacYaprak"
+        self.canakYaprakString = "CanakYaprak"
+        self.resultsString = "results"
+        self.createdAtString = "createdAt"
         self.urlString = 'url'
         self.canakURLPath = "TestImg/picCanak"
         self.focalLengthString = "focalLength"
