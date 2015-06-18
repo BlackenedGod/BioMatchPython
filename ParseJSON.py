@@ -19,7 +19,7 @@ class parseJSON:
         self.focalLengthString = "focalLength"
         self.sensorSize = ""
         self.objIDString = "objectId"
-        self.sensorSizeString = "SensorSize"
+        self.sensorSizeString = "sensorSize"
         self.tacURLPath = "TestImg/picTac"
         self.locationParam = urllib.urlencode({"where": json.dumps({
             "location": {
