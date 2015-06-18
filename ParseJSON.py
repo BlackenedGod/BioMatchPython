@@ -17,10 +17,9 @@ class parseJSON:
         self.urlString = 'url'
         self.canakURLPath = "TestImg/picCanak"
         self.focalLengthString = "focalLength"
-        self.focalLength = ""
         self.sensorSize = ""
         self.objIDString = "objectId"
-        self.sensorSizeString = "sensorSize"
+        self.sensorSizeString = "SensorSize"
         self.tacURLPath = "TestImg/picTac"
         self.locationParam = urllib.urlencode({"where": json.dumps({
             "location": {
