@@ -13,7 +13,10 @@ class Main:
         #jsoninstance.downloadLastImageTac()
         #time.sleep(1)
         #jsoninstance.downloadLastImageCanak()
-        if jsoninstance.downloadSpecificObject(objectid) != 1: print 'Kayit Bulunamadi!'
+        if objectid != 'start':
+            if jsoninstance.downloadSpecificObject(objectid) != 1: print 'Kayit Bulunamadi!'
+        else:
+            print 'ObjectID YANLIS Geldi!!!'
     #**************************************************************************************
         '''tacImagePath = "TestImg/picTac.png"
         canakImagePath = "TestImg/picCanak.png"
