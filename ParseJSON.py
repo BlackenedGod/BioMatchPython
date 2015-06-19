@@ -175,6 +175,8 @@ class parseJSON:
                     counter = i + 1
                     imageTacRGB = cv2.imread(imagePathTac)
                     print imagePathTac
+                    hist = cv2.calcHist([imageTacRGB], [0, 1, 2], None, [8, 8, 8], [0, 256, 0, 256, 0, 256])
+                    print hist
                     arrayA = a.describe(imageTacRGB, None)
                     imageCanakRGB = cv2.imread(imagePathCanak)
                     print imagePathCanak
