@@ -10,6 +10,7 @@ class Main:
     def jsonStart(self, objectid):
         #******************Test Edilecek Fotonun Tac ve Canagini Indir*************************
         jsoninstance = parseJSON()
+        #jsoninstance.downloadAll()
         #jsoninstance.downloadLastImageTac()
         #time.sleep(1)
         #jsoninstance.downloadLastImageCanak()

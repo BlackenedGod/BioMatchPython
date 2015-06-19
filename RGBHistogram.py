@@ -1,7 +1,7 @@
 __author__ = 'altug'
 
 import cv2
-
+import numpy as np
 class RGBHistogram:
     def __init__(self, bins):
         self.bins = bins
@@ -13,8 +13,9 @@ class RGBHistogram:
         return histogram.flatten()
 
 instance = RGBHistogram([8, 8, 8])
-
 image = cv2.imread("asd.jpg")
+instance.describe(image)
+
 print instance.describe(image)
 
 
