@@ -170,6 +170,18 @@ class parseJSON:
                 x = RGBHistogram([8,8,8])
                 y = RGBHistogram([8,8,8])
 
+                for imagePathTac, imagePathCanak in zip(imagePathsTac, imagePathsCanak):
+                    arrayA = a.describe(imagePathTac)
+                    arrayB = b.describe(imagePathCanak)
+
+                    arrayC = x.describe(path1)
+                    arrayD = y.describe(path2)
+
+                    c = numpy.in1d(arrayA, arrayC)
+                    d = numpy.in1d(arrayB, arrayD)
+                    print c
+                    print d
+
 
                 maskFilePathTac = "MaskImg/"+"mask_tac_"+str(self.getNowTime())+".jpg"
                 print 'Basari ile maskelendi -->', maskFilePathTac, '\n'
@@ -187,17 +199,7 @@ class parseJSON:
 
                 print 'Basari ile maskelendi -->', maskFilePathCanak, '\n'
 
-                for imagePathTac, imagePathCanak in zip(imagePathsTac, imagePathsCanak):
-                    arrayA = a.describe(imagePathTac)
-                    arrayB = b.describe(imagePathCanak)
 
-                    arrayC = x.describe(path1)
-                    arrayD = y.describe(path2)
-
-                    c = numpy.in1d(arrayA, arrayC)
-                    d = numpy.in1d(arrayB, arrayD)
-                    print c
-                    print d
 
 
 
