@@ -8,5 +8,4 @@ class HistCompare:
 
     def Compare(self, image, mask):
         desc = RGBHistogram([8, 8, 8])
-        mask = maskingClass()
         desc.describe(image, mask)

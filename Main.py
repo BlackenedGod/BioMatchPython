@@ -14,7 +14,7 @@ class Main:
         #jsoninstance.downloadLastImageTac()
         #time.sleep(1)
         #jsoninstance.downloadLastImageCanak()
-        if objectid == "":
+        if objectid == "start":
             if jsoninstance.downloadSpecificObject(objectid) != 1: print 'Kayit Bulunamadi!'
         else:
             jsoninstance.downloadSpecificObject(objectid)

@@ -26,6 +26,3 @@ class maskingClass():
 
         print 'Basari ile maskelendi -->', self.file_path, '\n'
 
-
-
-
