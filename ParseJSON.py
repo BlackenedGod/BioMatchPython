@@ -133,10 +133,8 @@ class parseJSON:
                 if(responseCanak != None):
                     print 'Canak Yaprak Indirildi .\n'
 
-                maskFilePathTac = "MaskImg/"+"mask_tac_"+str(i)+".jpg"
-                maskFilePathCanak = "MaskImg/"+"mask_canak_"+str(i)+".jpg"
-                maskingClass(self.tacURLPath, self.tacURLPath+"_"+dateTimePath).maskTac()
-                maskingClass(self.canakURLPath, self.canakURLPath+"_"+dateTimePath).maskCanak()
+                maskingClass(self.tacURLPath, self.tacURLPath+"_"+dateTimePath+".jpg").maskTac()
+                maskingClass(self.canakURLPath, self.canakURLPath+"_"+dateTimePath+".jpg").maskCanak()
 
 
                 retval = 1
