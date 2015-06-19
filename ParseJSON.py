@@ -135,8 +135,8 @@ class parseJSON:
 
                 maskFilePathTac = "MaskImg/"+"mask_tac_"+str(i)+".jpg"
                 maskFilePathCanak = "MaskImg/"+"mask_canak_"+str(i)+".jpg"
-                maskingClass(self.tacURLPath, self.tacURLPath+"_"+dateTimePath)
-                maskingClass(self.canakURLPath, self.canakURLPath+"_"+dateTimePath)
+                maskingClass(self.tacURLPath, self.tacURLPath+"_"+dateTimePath).maskTac()
+                maskingClass(self.canakURLPath, self.canakURLPath+"_"+dateTimePath).maskCanak()
 
 
                 retval = 1
