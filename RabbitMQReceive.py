@@ -4,6 +4,7 @@ import logging
 logging.basicConfig()
 import pika
 import Main
+from ParseJSON import parseJSON
 from MaskingClass import maskingClass
 
 connection = pika.BlockingConnection(pika.ConnectionParameters('188.166.67.19'))
@@ -14,9 +15,8 @@ channel.queue_declare(queue='idobj')
 
 def callback(ch, method, properties, body):
     print " [x] Received %r" % body
-    mainInstance = Main.Main()
-
-    retArray = mainInstance.jsonStart(body)
+    #mainInstance = Main.Main()
+    retArray = parseJSON.downloadSpecificObject(body)
     print retArray
 
 
