@@ -22,7 +22,7 @@ class parseJSON:
         self.sensorSizeString = "sensorSize"
         self.tacURLPath = "TestImg/Tac/picTac"
         self.dateTimePath = ""
-        self.retArray = [2]
+
         self.locationParam = urllib.urlencode({"where": json.dumps({
             "location": {
                 "$exists" : True
@@ -120,7 +120,7 @@ class parseJSON:
         print 'Istek geldi bulunursa indirilecek.'
 
         length = len(self.JSONObjectresult)
-        retval = 0
+        retArray = []
         for i in range(0, length):
             objectID = self.result[self.resultsString][i][self.objIDString]
             if objectID == objID:
@@ -138,11 +138,11 @@ class parseJSON:
                 #maskTacInstance = maskingClass(self.tacURLPath+"_"+self.dateTimePath+".jpg", self.canakURLPath+"_"+self.dateTimePath+".jpg")
                 path1 = self.tacURLPath+"_"+self.dateTimePath+".jpg"
                 path2 = self.canakURLPath+"_"+self.dateTimePath+".jpg"
-                self.retArray.append(path1)
-                self.retArray.append(path2)
+                retArray.append(path1)
+                retArray.append(path2)
                 retval = 1
 
-        return self.retArray
+        return retArray
 
 
 #instance = parseJSON()
