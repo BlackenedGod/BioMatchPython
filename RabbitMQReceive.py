@@ -17,7 +17,7 @@ def callback(ch, method, properties, body):
     print " [x] Received %r" % body
     #mainInstance = Main.Main()
     retArray = parseJSON().downloadSpecificObject(body)
-    print retArray
+    maskingClass(retArray[0], retArray[1])
 
 
 
