@@ -153,8 +153,8 @@ class parseJSON:
                 imageTac = cv2.imread(tac_file_path)
                 imageCanak = cv2.imread(canak_file_path)
 
-                imagePathsTac = sorted(glob.glob("Train/Tac/*.jpg"))
-                imagePathsCanak = sorted(glob.glob("Train/Canak/*.jpg"))
+                imagePathsTac = sorted(glob.glob("TrainImg/Tac/*.jpg"))
+                imagePathsCanak = sorted(glob.glob("TrainImg/Canak/*.jpg"))
 
                 grayTac = cv2.cvtColor(imageTac, cv2.COLOR_BGR2GRAY)
                 grayCanak = cv2.cvtColor(imageCanak, cv2.COLOR_BGR2GRAY)
