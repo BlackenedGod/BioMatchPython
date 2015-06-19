@@ -1,3 +1,4 @@
+import glob
 import json, httplib, urllib
 import datetime
 import time
@@ -152,6 +153,8 @@ class parseJSON:
                 imageTac = cv2.imread(tac_file_path)
                 imageCanak = cv2.imread(canak_file_path)
 
+                imagePathsTac = sorted(glob.glob("Train/Tac/*.jpg"))
+                imagePathsCanak = sorted(glob.glob("Train/Canak/*.jpg"))
 
                 grayTac = cv2.cvtColor(imageTac, cv2.COLOR_BGR2GRAY)
                 grayCanak = cv2.cvtColor(imageCanak, cv2.COLOR_BGR2GRAY)
@@ -164,30 +167,40 @@ class parseJSON:
                 (_, new_mask) = cv2.threshold(blurTac, 0, 255, cv2.THRESH_BINARY+cv2.THRESH_OTSU)
                 a = RGBHistogram([8,8,8])
                 b = RGBHistogram([8,8,8])
+                x = RGBHistogram([8,8,8])
+                y = RGBHistogram([8,8,8])
 
-                arrayA = a.describe(imageTac, new_mask)
-                arrayB = b.describe(imageTac)
+
                 maskFilePathTac = "MaskImg/"+"mask_tac_"+str(self.getNowTime())+".jpg"
-                c = numpy.in1d(arrayA, arrayB)
-                print c
-                cv2.imwrite(maskFilePathTac, new_mask)
-
                 print 'Basari ile maskelendi -->', maskFilePathTac, '\n'
                 #*********************************************************************
 
                 time.sleep(2)
                 (_, new_mask) = cv2.threshold(blurCanak, 0, 255, cv2.THRESH_BINARY+cv2.THRESH_OTSU)
-                a = RGBHistogram([8,8,8])
-                b = RGBHistogram([8,8,8])
 
-                arrayA = a.describe(imageCanak, new_mask)
-                arrayB = b.describe(imageCanak)
+
+
                 maskFilePathCanak = "MaskImg/"+"mask_canak_"+str(self.getNowTime())+".jpg"
-                c = numpy.in1d(arrayA, arrayB)
-                print c
+
                 cv2.imwrite(maskFilePathCanak, new_mask)
+                cv2.imwrite(maskFilePathTac, new_mask)
 
                 print 'Basari ile maskelendi -->', maskFilePathCanak, '\n'
+
+                for imagePathTac, imagePathCanak in zip(imagePathsTac, imagePathsCanak):
+                    arrayA = a.describe(imagePathTac)
+                    arrayB = b.describe(imagePathCanak)
+
+                    arrayC = x.describe(path1)
+                    arrayD = y.describe(path2)
+
+                    c = numpy.in1d(arrayA, arrayC)
+                    d = numpy.in1d(arrayB, arrayD)
+
+
+
+
+
                 #***********************************************************
 
 
