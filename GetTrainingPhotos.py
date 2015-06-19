@@ -51,11 +51,11 @@ class GetTrainingPhotos:
 
         length = len(self.JSONObjectresult)
         for i in range(0, length):
-            urlInfoTac = self.result[self.resultsString][i][self.objIDString][self.canakYaprakString][self.urlString]
-            urlInfoCanak = self.result[self.resultsString][i][self.objIDString][self.canakYaprakString][self.urlString]
+            urlInfoTac = self.result[self.resultsString][i][self.canakYaprakString][self.urlString]
+            urlInfoCanak = self.result[self.resultsString][i][self.canakYaprakString][self.urlString]
             specyInfo = self.result[self.resultsString][i][self.objIDString]
             dateTimePath = datetime.datetime.strptime(self.result[self.resultsString][i][self.createdAtString], "%Y-%m-%dT%H:%M:%S.%fZ").strftime("%Y-%m-%d %H:%M:%S.%f")
-            urllib.urlretrieve(urlInfoTac, self.tacURLPath+dateTimePath+".png")
-            urllib.urlretrieve(urlInfoCanak, self.canakURLPath+dateTimePath+".png")
-            maskFilePathTac = "MaskImg/"+"mask_tac_"+str(i)+".png"
-            maskFilePathCanak = "MaskImg/"+"mask_canak_"+str(i)+".png"
+            urllib.urlretrieve(urlInfoTac, self.tacURLPath+dateTimePath+".jpg")
+            urllib.urlretrieve(urlInfoCanak, self.canakURLPath+dateTimePath+".jpg")
+            maskFilePathTac = "MaskImg/"+"mask_tac_"+str(i)+".jpg"
+            maskFilePathCanak = "MaskImg/"+"mask_canak_"+str(i)+".jpg"
