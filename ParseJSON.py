@@ -187,13 +187,14 @@ class parseJSON:
                     print path2
                     arrayD = y.describe(imageCanakToTest, None)
 
-                    c = arrayA - arrayC
-                    d = arrayB - arrayD
+                    c = sum(abs(arrayA - arrayC))
+                    d = sum(abs(arrayB - arrayD))
 
-                    print "Array A", arrayA
+                    print "Taclarin toplami : ", c, "\nCanaklarin toplami : ", d
+                    '''print "Array A", arrayA
                     print "Array B", arrayB
                     print "Array C", arrayC
-                    print "Array D", arrayD
+                    print "Array D", arrayD'''
 
 
 
