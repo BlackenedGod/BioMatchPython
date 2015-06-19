@@ -22,7 +22,7 @@ class parseJSON:
         self.sensorSizeString = "sensorSize"
         self.tacURLPath = "TestImg/Tac/picTac"
         self.dateTimePath = ""
-        self.retArray = []
+        self.retArray = [2]
         self.locationParam = urllib.urlencode({"where": json.dumps({
             "location": {
                 "$exists" : True
