@@ -3,8 +3,11 @@ import datetime
 import time
 import Image
 import cv2
+import numpy
 from CalcDistance import CalcDistance
 from MaskingClass import maskingClass
+from RGBHistogram import RGBHistogram
+
 
 class parseJSON:
 
@@ -138,11 +141,56 @@ class parseJSON:
                 #maskTacInstance = maskingClass(self.tacURLPath+"_"+self.dateTimePath+".jpg", self.canakURLPath+"_"+self.dateTimePath+".jpg")
                 path1 = self.tacURLPath+"_"+self.dateTimePath+".jpg"
                 path2 = self.canakURLPath+"_"+self.dateTimePath+".jpg"
+                '''
                 retArray.append(path1)
                 retArray.append(path2)
-                retval = 1
+                retval = 1'''
 
-        return retArray
+                tac_file_path = path1
+                canak_file_path = path2
+
+                imageTac = cv2.imread(tac_file_path)
+                imageCanak = cv2.imread(canak_file_path)
+
+
+                grayTac = cv2.cvtColor(imageTac, cv2.COLOR_BGR2GRAY)
+                grayCanak = cv2.cvtColor(imageCanak, cv2.COLOR_BGR2GRAY)
+
+                blurTac = cv2.GaussianBlur(grayTac, (5, 5), 0)
+                blurCanak = cv2.GaussianBlur(grayCanak, (5, 5), 0)
+
+                time.sleep(2)
+                #***************************************TAC***************************
+                (_, new_mask) = cv2.threshold(blurTac, 0, 255, cv2.THRESH_BINARY+cv2.THRESH_OTSU)
+                a = RGBHistogram([8,8,8])
+                b = RGBHistogram([8,8,8])
+
+                arrayA = a.describe(imageTac, new_mask)
+                arrayB = b.describe(imageTac)
+                maskFilePathTac = "MaskImg/"+"mask_tac_"+str(self.getNowTime())+".jpg"
+                c = numpy.in1d(arrayA, arrayB)
+                print c
+                cv2.imwrite(maskFilePathTac, new_mask)
+
+                print 'Basari ile maskelendi -->', maskFilePathTac, '\n'
+                #*********************************************************************
+
+                time.sleep(2)
+                (_, new_mask) = cv2.threshold(blurCanak, 0, 255, cv2.THRESH_BINARY+cv2.THRESH_OTSU)
+                a = RGBHistogram([8,8,8])
+                b = RGBHistogram([8,8,8])
+
+                arrayA = a.describe(imageCanak, new_mask)
+                arrayB = b.describe(imageCanak)
+                maskFilePathCanak = "MaskImg/"+"mask_canak_"+str(self.getNowTime())+".jpg"
+                c = numpy.in1d(arrayA, arrayB)
+                print c
+                cv2.imwrite(maskFilePathCanak, new_mask)
+
+                print 'Basari ile maskelendi -->', maskFilePathCanak, '\n'
+                #***********************************************************
+
+
 
 
 #instance = parseJSON()

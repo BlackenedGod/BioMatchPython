@@ -21,9 +21,9 @@ def callback(ch, method, properties, body):
     print 'Tac PATH -->', retArray[0]
     print '\nCanak PATH -->', retArray[1]
 
+
 channel.basic_consume(callback,
                       queue='objand',
                       no_ack=True)
-
 
 channel.start_consuming()
