@@ -21,6 +21,7 @@ class parseJSON:
         self.objIDString = "objectId"
         self.sensorSizeString = "sensorSize"
         self.tacURLPath = "TestImg/Tac/picTac"
+        self.dateTimePath = ""
         self.locationParam = urllib.urlencode({"where": json.dumps({
             "location": {
                 "$exists" : True
@@ -124,20 +125,20 @@ class parseJSON:
             if objectID == objID:
                 urlInfoTac = self.result[self.resultsString][i][self.tacYaprakString][self.urlString]
                 urlInfoCanak = self.result[self.resultsString][i][self.canakYaprakString][self.urlString]
-                dateTimePath = datetime.datetime.strptime(self.result[self.resultsString][i][self.createdAtString], "%Y-%m-%dT%H:%M:%S.%fZ").strftime("%Y-%m-%d %H:%M:%S.%f")
+                self.dateTimePath = datetime.datetime.strptime(self.result[self.resultsString][i][self.createdAtString], "%Y-%m-%dT%H:%M:%S.%fZ").strftime("%Y-%m-%d %H:%M:%S.%f")
 
-                responseTac = urllib.urlretrieve(urlInfoTac, self.tacURLPath+"_"+dateTimePath+".jpg")
+                responseTac = urllib.urlretrieve(urlInfoTac, self.tacURLPath+"_"+self.dateTimePath+".jpg")
                 if(responseTac != None):
                     print 'Tac Yaprak Indirildi .\n'
-                responseCanak = urllib.urlretrieve(urlInfoCanak, self.canakURLPath+"_"+dateTimePath+".jpg")
+                responseCanak = urllib.urlretrieve(urlInfoCanak, self.canakURLPath+"_"+self.dateTimePath+".jpg")
                 if(responseCanak != None):
                     print 'Canak Yaprak Indirildi .\n'
 
-                maskTacInstance = maskingClass(self.tacURLPath+"_"+dateTimePath+".jpg", self.canakURLPath+"_"+dateTimePath+".jpg")
+                #maskTacInstance = maskingClass(self.tacURLPath+"_"+self.dateTimePath+".jpg", self.canakURLPath+"_"+self.dateTimePath+".jpg")
 
                 retval = 1
 
-        return retval
+        return self.tacURLPath+"_"+self.dateTimePath+".jpg", self.canakURLPath+"_"+self.dateTimePath+".jpg"
 
 
 #instance = parseJSON()
