@@ -138,8 +138,8 @@ class parseJSON:
                 #maskTacInstance = maskingClass(self.tacURLPath+"_"+self.dateTimePath+".jpg", self.canakURLPath+"_"+self.dateTimePath+".jpg")
                 path1 = self.tacURLPath+"_"+self.dateTimePath+".jpg"
                 path2 = self.canakURLPath+"_"+self.dateTimePath+".jpg"
-                self.retArray[0] = path1
-                self.retArray[1] = path2
+                self.retArray.append(path1)
+                self.retArray.append(path2)
                 retval = 1
 
         return self.retArray
