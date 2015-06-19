@@ -171,24 +171,31 @@ class parseJSON:
                 y = RGBHistogram([8, 8, 8])
 
                 for imagePathTac, imagePathCanak in zip(imagePathsTac, imagePathsCanak):
-                    i = 1
-                    counter = i + 1
+
                     imageTacRGB = cv2.imread(imagePathTac)
                     print imagePathTac
-                    hist = cv2.calcHist([imageTacRGB], [0, 1, 2], None, [8, 8, 8], [0, 256, 0, 256, 0, 256])
-                    print hist
-                    arrayA = a.describe(imageTacRGB, None)
+                    arrayA = cv2.calcHist([imageTacRGB], [0, 1, 2], None, [8, 8, 8], [0, 256, 0, 256, 0, 256])
+                    arrayA = cv2.normalize(arrayA, None)
+
                     imageCanakRGB = cv2.imread(imagePathCanak)
                     print imagePathCanak
-                    arrayB = b.describe(imageCanakRGB, None)
+                    arrayB = cv2.calcHist([imageCanakRGB], [0, 1, 2], None, [8, 8, 8], [0, 256, 0, 256, 0, 256])
+                    arrayB = cv2.normalize(arrayB, None)
 
                     imageTacToTest = cv2.imread(path1)
                     print path1
-                    arrayC = x.describe(imageTacToTest, None)
+                    arrayC = cv2.calcHist([imageTacToTest], [0, 1, 2], None, [8, 8, 8], [0, 256, 0, 256, 0, 256])
+                    arrayC = cv2.normalize(arrayC, None)
+
                     imageCanakToTest = cv2.imread(path2)
                     print path2
-                    arrayD = y.describe(imageCanakToTest, None)
+                    arrayD = cv2.calcHist([imageCanakToTest], [0, 1, 2], None, [8, 8, 8], [0, 256, 0, 256, 0, 256])
+                    arrayD = cv2.normalize(arrayD, None)
 
+                    comparisonTac = cv2.compareHist(arrayA, arrayC, cv2.HISTCMP_BHATTACHARYYA)
+                    comparisonCanak = cv2.compareHist(arrayB, arrayD, cv2.HISTCMP_BHATTACHARYYA)
+
+                    print "Tac karsilastirmasi : ", comparisonTac, " Canak karsilastirmasi : ", comparisonCanak
                     c = sum(abs(arrayA - arrayC))
                     d = sum(abs(arrayB - arrayD))
 
