@@ -12,10 +12,10 @@ class RGBHistogram:
 
         return histogram.flatten()
 
-instance = RGBHistogram([8,8,8])
+instance = RGBHistogram([8, 8, 8])
 
-#image = cv2.imread("TestImg/crocus-1.png")
-#instance.describe(image)
+image = cv2.imread("asd.jpg")
+print instance.describe(image)
 
 
 

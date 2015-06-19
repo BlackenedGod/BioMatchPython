@@ -12,7 +12,7 @@ channel.queue_declare(queue='idobj')
 
 channel.basic_publish(exchange='',#Kuyruk ismine gore convert edicek mesaji yollayacak bos default.
                       routing_key='idobj',
-                      body='FOTO URL !')
+                      body='cmlBStmEbo')
 
 print " [x] Sent 'Burada URL olacak !'"
 

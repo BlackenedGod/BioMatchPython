@@ -15,12 +15,12 @@ class parseJSON:
         self.resultsString = "results"
         self.createdAtString = "createdAt"
         self.urlString = 'url'
-        self.canakURLPath = "TestImg/picCanak"
+        self.canakURLPath = "TestImg/picCanak.jpg"
         self.focalLengthString = "focalLength"
         self.sensorSize = ""
         self.objIDString = "objectId"
         self.sensorSizeString = "sensorSize"
-        self.tacURLPath = "TestImg/picTac"
+        self.tacURLPath = "TestImg/picTac.jpg"
         self.locationParam = urllib.urlencode({"where": json.dumps({
             "location": {
                 "$exists" : True
@@ -133,13 +133,15 @@ class parseJSON:
                 if(responseCanak != None):
                     print 'Canak Yaprak Indirildi .\n'
 
-                maskFilePathTac = "MaskImg/"+"mask_tac_"+str(i)+".png"
-                maskFilePathCanak = "MaskImg/"+"mask_canak_"+str(i)+".png"
+                maskFilePathTac = "MaskImg/"+"mask_tac_"+str(i)+".jpg"
+                maskFilePathCanak = "MaskImg/"+"mask_canak_"+str(i)+".jpg"
                 focalLength = self.result[self.resultsString][i][self.focalLengthString]
                 sensorSize = self.result[self.resultsString][i][self.sensorSizeString]
                 #CalcDistance().calcDistance(focalLength=focalLength, sensorHeigth=sensorSize, distanceToObject=10)
-                maskingClass(maskFilePathTac, self.tacURLPath+dateTimePath+".png")
-                maskingClass(maskFilePathCanak, self.canakURLPath+dateTimePath+".png")
+                maskingClass(maskFilePathTac, self.tacURLPath)
+                maskingClass(maskFilePathCanak, self.canakURLPath)
+
+
                 retval = 1
 
         return retval
