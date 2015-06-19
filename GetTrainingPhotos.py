@@ -21,7 +21,7 @@ class GetTrainingPhotos:
         self.focalLengthString = "focalLength"
         self.sensorSize = ""
         self.objIDString = "objectId"
-        self.sensorSizeString = "sensorSize"
+        self.sensorSizeString = "SensorSize"
         self.tacURLPath = "TestImg/picTac.jpg"
         self.specyName = "specy"
         self.locationParam = urllib.urlencode({"where": json.dumps({
