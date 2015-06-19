@@ -4,3 +4,4 @@ from GetTrainingPhotos import GetTrainingPhotos
 
 getObj = GetTrainingPhotos()
 
+getObj.downloadAll()
