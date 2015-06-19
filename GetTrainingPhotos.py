@@ -42,7 +42,7 @@ class GetTrainingPhotos:
             self.result = json.loads(self.connection.getresponse().read())
             self.dump = json.dumps(self.result) # Komple String sonucu icin .
             self.JSONObjectresult = self.result[self.resultsString] # Tum JSON objeleri icin .
-            print self.dump
+            #print self.dump
         except RuntimeError:
             print 'Baglanti Kurulamadi !'
 
