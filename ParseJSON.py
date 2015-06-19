@@ -186,7 +186,10 @@ class parseJSON:
                     c = arrayA - arrayC
                     d = arrayB - arrayD
 
-                    print arrayA, arrayB ,arrayC, arrayD
+                    print "Array A", arrayA
+                    print "Array B", arrayB
+                    print "Array C", arrayC
+                    print "Array D", arrayD
 
 
 
