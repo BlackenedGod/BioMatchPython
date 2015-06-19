@@ -23,7 +23,8 @@ class GetTrainingPhotos:
         self.objIDString = "objectId"
         self.sensorSizeString = "SensorSize"
         self.tacURLPath = "TestImg/picTac.jpg"
-        self.trainPath = "TrainImg/"
+        self.trainPathTac = "TrainImg/Tac/"
+        self.trainPathCanak = "TrainImg/Canak/"
         self.specyName = "specy"
         self.locationParam = urllib.urlencode({"where": json.dumps({
             "location": {
@@ -57,7 +58,7 @@ class GetTrainingPhotos:
             specyName = self.result[self.resultsString][i][self.specyName]
             print specyName
             dateTimePath = datetime.datetime.strptime(self.result[self.resultsString][i][self.createdAtString], "%Y-%m-%dT%H:%M:%S.%fZ").strftime("%Y-%m-%d %H:%M:%S.%f")
-            urllib.urlretrieve(urlInfoTac, self.trainPath+specyName+ "_" +"tac" + "_" +dateTimePath + ".jpg")
-            urllib.urlretrieve(urlInfoCanak, self.trainPath+specyName+ "_"+"canak" + "_" + dateTimePath + ".jpg")
+            urllib.urlretrieve(urlInfoTac, self.trainPathTac+specyName+ "_" +"tac" + "_" +dateTimePath + ".jpg")
+            urllib.urlretrieve(urlInfoCanak, self.trainPathCanak+specyName+ "_"+"canak" + "_" + dateTimePath + ".jpg")
             maskFilePathTac = "MaskImg/"+"mask_tac_"+str(i)+".jpg"
             maskFilePathCanak = "MaskImg/"+"mask_canak_"+str(i)+".jpg"

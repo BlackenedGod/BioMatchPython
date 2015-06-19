@@ -15,12 +15,12 @@ class parseJSON:
         self.resultsString = "results"
         self.createdAtString = "createdAt"
         self.urlString = 'url'
-        self.canakURLPath = "TestImg/picCanak.jpg"
+        self.canakURLPath = "TestImg/Canak/picCanak.jpg"
         self.focalLengthString = "focalLength"
         self.sensorSize = ""
         self.objIDString = "objectId"
         self.sensorSizeString = "sensorSize"
-        self.tacURLPath = "TestImg/picTac.jpg"
+        self.tacURLPath = "TestImg/Tac/picTac.jpg"
         self.locationParam = urllib.urlencode({"where": json.dumps({
             "location": {
                 "$exists" : True
