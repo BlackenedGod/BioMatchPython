@@ -138,7 +138,7 @@ class parseJSON:
 
                 retval = 1
 
-        return self.tacURLPath+"_"+self.dateTimePath+".jpg", self.canakURLPath+"_"+self.dateTimePath+".jpg"
+        return (self.tacURLPath+"_"+self.dateTimePath+".jpg"), (self.canakURLPath+"_"+self.dateTimePath+".jpg")
 
 
 #instance = parseJSON()
