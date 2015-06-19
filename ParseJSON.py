@@ -173,10 +173,10 @@ class parseJSON:
                 for imagePathTac, imagePathCanak in zip(imagePathsTac, imagePathsCanak):
                     i = 1
                     counter = i + 1
-                    imageTacRGB = cv2.imread(imagePathTac, None)
-                    arrayA = a.describe(imageTacRGB)
-                    imageCanakRGB = cv2.imread(imagePathCanak, None)
-                    arrayB = b.describe(imageCanakRGB)
+                    imageTacRGB = cv2.imread(imagePathTac)
+                    arrayA = a.describe(imageTacRGB, None)
+                    imageCanakRGB = cv2.imread(imagePathCanak)
+                    arrayB = b.describe(imageCanakRGB, None)
 
                     imageTacToTest = cv2.imread(path1)
                     arrayC = x.describe(imageTacToTest, None)
