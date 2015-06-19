@@ -165,22 +165,23 @@ class parseJSON:
                 time.sleep(2)
                 #***************************************TAC***************************
                 (_, new_mask) = cv2.threshold(blurTac, 0, 255, cv2.THRESH_BINARY+cv2.THRESH_OTSU)
-                a = RGBHistogram([8,8,8])
-                b = RGBHistogram([8,8,8])
-                x = RGBHistogram([8,8,8])
-                y = RGBHistogram([8,8,8])
+                a = RGBHistogram([8, 8, 8])
+                b = RGBHistogram([8, 8, 8])
+                x = RGBHistogram([8, 8, 8])
+                y = RGBHistogram([8, 8, 8])
 
                 for imagePathTac, imagePathCanak in zip(imagePathsTac, imagePathsCanak):
-                    counter = 0
+                    i = 1
+                    counter = i + 1
                     arrayA = a.describe(imagePathTac)
                     arrayB = b.describe(imagePathCanak)
 
                     arrayC = x.describe(path1)
                     arrayD = y.describe(path2)
 
-                    c = numpy.in1d(arrayA, arrayC)
-                    d = numpy.in1d(arrayB, arrayD)
-                    counter = counter + 1
+                    c = arrayA - arrayC
+                    d = arrayB - arrayD
+
                     print counter
 
 
