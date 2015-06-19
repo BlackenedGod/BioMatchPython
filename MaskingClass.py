@@ -5,6 +5,7 @@ __author__ = 'kerem'
 import numpy as np
 import cv2
 from RGBHistogram import RGBHistogram
+import time
 
 
 class maskingClass():
@@ -22,6 +23,7 @@ class maskingClass():
         self.blurTac = cv2.GaussianBlur(self.grayTac, (5, 5), 0)
         self.blurCanak = cv2.GaussianBlur(self.grayCanak, (5, 5), 0)
 
+        time.sleep(10)
         #***************************************TAC***************************
         (_, new_mask) = cv2.threshold(self.blurTac, 0, 255, cv2.THRESH_BINARY+cv2.THRESH_OTSU)
         a = RGBHistogram([8,8,8])
@@ -36,6 +38,8 @@ class maskingClass():
 
         print 'Basari ile maskelendi -->', maskFilePathTac, '\n'
         #*********************************************************************
+
+        time.sleep(10)
         (_, new_mask) = cv2.threshold(self.blurCanak, 0, 255, cv2.THRESH_BINARY+cv2.THRESH_OTSU)
         a = RGBHistogram([8,8,8])
         b = RGBHistogram([8,8,8])
