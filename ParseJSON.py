@@ -196,6 +196,8 @@ class parseJSON:
 
                     c = numpy.in1d(arrayA, arrayC)
                     d = numpy.in1d(arrayB, arrayD)
+                    print c
+                    print d
 
 
 

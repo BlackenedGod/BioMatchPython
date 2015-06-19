@@ -53,7 +53,7 @@ class GetTrainingPhotos:
 
         length = len(self.JSONObjectresult)
         for i in range(0, length):
-            urlInfoTac = self.result[self.resultsString][i][self.canakYaprakString][self.urlString]
+            urlInfoTac = self.result[self.resultsString][i][self.tacYaprakString][self.urlString]
             urlInfoCanak = self.result[self.resultsString][i][self.canakYaprakString][self.urlString]
             specyName = self.result[self.resultsString][i][self.specyName]
             print specyName
