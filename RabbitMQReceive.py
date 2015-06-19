@@ -17,7 +17,8 @@ def callback(ch, method, properties, body):
     mainInstance = Main.Main()
 
     retArray = mainInstance.jsonStart(body)
-    maskingClass(retArray[0], retArray[1])
+    print retArray
+
 
 
 channel.basic_consume(callback,
