@@ -165,10 +165,10 @@ class parseJSON:
                 time.sleep(2)
                 #***************************************TAC***************************
                 (_, new_mask) = cv2.threshold(blurTac, 0, 255, cv2.THRESH_BINARY+cv2.THRESH_OTSU)
-                a = RGBHistogram([8, 8, 8])
+                '''a = RGBHistogram([8, 8, 8])
                 b = RGBHistogram([8, 8, 8])
                 x = RGBHistogram([8, 8, 8])
-                y = RGBHistogram([8, 8, 8])
+                y = RGBHistogram([8, 8, 8])'''
 
                 for imagePathTac, imagePathCanak in zip(imagePathsTac, imagePathsCanak):
 
@@ -196,8 +196,8 @@ class parseJSON:
                     comparisonCanak = cv2.compareHist(arrayB, arrayD, cv2.HISTCMP_BHATTACHARYYA)
 
                     print "Tac karsilastirmasi : ", comparisonTac, " Canak karsilastirmasi : ", comparisonCanak
-                    c = sum(abs(arrayA - arrayC))
-                    d = sum(abs(arrayB - arrayD))
+                    '''c = sum(abs(arrayA - arrayC))
+                    d = sum(abs(arrayB - arrayD))'''
 
                     print "Taclarin toplami : ", c, "\nCanaklarin toplami : ", d
                     '''print "Array A", arrayA
