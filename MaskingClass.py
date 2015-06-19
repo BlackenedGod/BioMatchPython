@@ -8,43 +8,49 @@ from RGBHistogram import RGBHistogram
 
 
 class maskingClass():
-    def __init__(self, file_path, file_name):
+    def __init__(self, tac_file_path, canak_file_path):
 
-        self.file_path = file_path
-        self.file_name = file_name
-        self.image = cv2.imread(self.file_name)
-        self.gray = cv2.cvtColor(self.image, cv2.COLOR_BGR2GRAY)
-        self.blur = cv2.GaussianBlur(self.gray, (5, 5), 0)
+        self.tac_file_path = tac_file_path
+        self.canak_file_path = canak_file_path
 
-    def getNowTime(self):
-        #En son eklenen kaydi zaman ile bulabilmek icin simdiki zamani al.
-        self.nowhour = datetime.datetime.now()
-        return self.nowhour
+        self.imageTac = cv2.imread(self.tac_file_path)
+        self.imageCanak = cv2.imread(self.canak_file_path)
 
-    def maskTac(self):
-        (_, new_mask) = cv2.threshold(self.blur, 0, 255, cv2.THRESH_BINARY+cv2.THRESH_OTSU)
+        self.grayTac = cv2.cvtColor(self.imageTac, cv2.COLOR_BGR2GRAY)
+        self.grayCanak = cv2.cvtColor(self.imageCanak, cv2.COLOR_BGR2GRAY)
+
+        self.blurTac = cv2.GaussianBlur(self.grayTac, (5, 5), 0)
+        self.blurCanak = cv2.GaussianBlur(self.grayCanak, (5, 5), 0)
+
+        #***************************************TAC***************************
+        (_, new_mask) = cv2.threshold(self.blurTac, 0, 255, cv2.THRESH_BINARY+cv2.THRESH_OTSU)
         a = RGBHistogram([8,8,8])
         b = RGBHistogram([8,8,8])
 
-        arrayA = a.describe(self.image, new_mask)
-        arrayB = b.describe(self.image)
+        arrayA = a.describe(self.imageTac, new_mask)
+        arrayB = b.describe(self.imageTac)
         maskFilePathTac = "MaskImg/"+"mask_tac_"+self.getNowTime()+".jpg"
         c = np.in1d(arrayA, arrayB)
         print c
         cv2.imwrite(maskFilePathTac, new_mask)
 
         print 'Basari ile maskelendi -->', maskFilePathTac, '\n'
-
-    def maskCanak(self):
-        (_, new_mask) = cv2.threshold(self.blur, 0, 255, cv2.THRESH_BINARY+cv2.THRESH_OTSU)
+        #*********************************************************************
+        (_, new_mask) = cv2.threshold(self.blurCanak, 0, 255, cv2.THRESH_BINARY+cv2.THRESH_OTSU)
         a = RGBHistogram([8,8,8])
         b = RGBHistogram([8,8,8])
 
-        arrayA = a.describe(self.image, new_mask)
-        arrayB = b.describe(self.image)
+        arrayA = a.describe(self.imageCanak, new_mask)
+        arrayB = b.describe(self.imageCanak)
         maskFilePathCanak = "MaskImg/"+"mask_canak_"+self.getNowTime()+".jpg"
         c = np.in1d(arrayA, arrayB)
         print c
         cv2.imwrite(maskFilePathCanak, new_mask)
 
         print 'Basari ile maskelendi -->', maskFilePathCanak, '\n'
+        #***********************************************************
+
+    def getNowTime(self):
+        #En son eklenen kaydi zaman ile bulabilmek icin simdiki zamani al.
+        self.nowhour = datetime.datetime.now()
+        return self.nowhour

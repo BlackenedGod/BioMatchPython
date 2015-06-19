@@ -133,11 +133,7 @@ class parseJSON:
                 if(responseCanak != None):
                     print 'Canak Yaprak Indirildi .\n'
 
-                maskTacInstance = maskingClass(self.tacURLPath, self.tacURLPath+"_"+dateTimePath+".jpg")
-                maskTacInstance.maskTac()
-                maskCanakInstance = maskingClass(self.canakURLPath, self.canakURLPath+"_"+dateTimePath+".jpg")
-                maskCanakInstance.maskCanak()
-
+                maskTacInstance = maskingClass(self.tacURLPath, self.canakURLPath)
 
                 retval = 1
 
