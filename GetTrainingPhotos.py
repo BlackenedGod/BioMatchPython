@@ -53,7 +53,8 @@ class GetTrainingPhotos:
         for i in range(0, length):
             urlInfoTac = self.result[self.resultsString][i][self.canakYaprakString][self.urlString]
             urlInfoCanak = self.result[self.resultsString][i][self.canakYaprakString][self.urlString]
-            specyInfo = self.result[self.resultsString][i][self.objIDString]
+            specyName = self.result[self.resultsString][i][self.specyName]
+            print specyName
             dateTimePath = datetime.datetime.strptime(self.result[self.resultsString][i][self.createdAtString], "%Y-%m-%dT%H:%M:%S.%fZ").strftime("%Y-%m-%d %H:%M:%S.%f")
             urllib.urlretrieve(urlInfoTac, self.tacURLPath+dateTimePath+".jpg")
             urllib.urlretrieve(urlInfoCanak, self.canakURLPath+dateTimePath+".jpg")
