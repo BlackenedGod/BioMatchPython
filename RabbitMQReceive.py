@@ -15,8 +15,9 @@ channel.queue_declare(queue='idobj')
 def callback(ch, method, properties, body):
     print " [x] Received %r" % body
     mainInstance = Main.Main()
-    (tacPath, canakPath) = mainInstance.jsonStart(body)
-    maskingClass(tacPath, canakPath)
+
+    retArray = mainInstance.jsonStart(body)
+    maskingClass(retArray[0], retArray[1])
 
 
 channel.basic_consume(callback,
