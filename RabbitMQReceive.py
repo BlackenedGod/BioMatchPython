@@ -17,9 +17,9 @@ def callback(ch, method, properties, body):
     print " [x] Received %r" % body
     #mainInstance = Main.Main()
     retArray = parseJSON().downloadSpecificObject(body)
-    maskingClass(retArray[0], retArray[1])
-
-
+    #maskingClass(retArray[0], retArray[1])
+    print 'Tac PATH -->', retArray[0]
+    print '\nCanak PATH -->', retArray[1]
 
 channel.basic_consume(callback,
                       queue='objand',
