@@ -171,6 +171,7 @@ class parseJSON:
                 y = RGBHistogram([8,8,8])
 
                 for imagePathTac, imagePathCanak in zip(imagePathsTac, imagePathsCanak):
+                    counter = 0
                     arrayA = a.describe(imagePathTac)
                     arrayB = b.describe(imagePathCanak)
 
@@ -179,8 +180,9 @@ class parseJSON:
 
                     c = numpy.in1d(arrayA, arrayC)
                     d = numpy.in1d(arrayB, arrayD)
-                    print c
-                    print d
+                    counter = counter + 1
+                    print counter
+
 
 
                 maskFilePathTac = "MaskImg/"+"mask_tac_"+str(self.getNowTime())+".jpg"
