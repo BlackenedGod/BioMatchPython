@@ -126,7 +126,7 @@ class parseJSON:
         print 'Istek geldi bulunursa indirilecek.'
 
         length = len(self.JSONObjectresult)
-        retArray = []
+
         for i in range(0, length):
             objectID = self.result[self.resultsString][i][self.objIDString]
             if objectID == objID:
@@ -140,7 +140,7 @@ class parseJSON:
                 responseCanak = urllib.urlretrieve(urlInfoCanak, self.canakURLPath+"_"+self.dateTimePath+".jpg")
                 if(responseCanak != None):
                     print 'Canak Yaprak Indirildi .\n'
-
+                RabbitMQReceive.connection.close()
                 #maskTacInstance = maskingClass(self.tacURLPath+"_"+self.dateTimePath+".jpg", self.canakURLPath+"_"+self.dateTimePath+".jpg")
                 path1 = self.tacURLPath+"_"+self.dateTimePath+".jpg"
                 path2 = self.canakURLPath+"_"+self.dateTimePath+".jpg"
