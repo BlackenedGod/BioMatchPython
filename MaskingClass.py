@@ -7,7 +7,6 @@ import cv2
 from RGBHistogram import RGBHistogram
 import time
 
-
 class maskingClass():
     def __init__(self, tac_file_path, canak_file_path):
 

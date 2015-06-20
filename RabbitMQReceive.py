@@ -15,6 +15,7 @@ channel.queue_declare(queue='objand')
 
 def callback(ch, method, properties, body):
     print " [x] Received %r" % body
+    connection.close()
     #mainInstance = Main.Main()
     retArray = parseJSON().downloadSpecificObject(body)
     #maskingClass(retArray[0], retArray[1])

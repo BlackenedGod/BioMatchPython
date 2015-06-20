@@ -1,6 +1,7 @@
 import glob
 import json, httplib, urllib
 import datetime
+import os
 import time
 import Image
 import cv2
@@ -8,6 +9,7 @@ import numpy
 from CalcDistance import CalcDistance
 from MaskingClass import maskingClass
 from RGBHistogram import RGBHistogram
+import RabbitMQReceive
 
 
 class parseJSON:
@@ -233,14 +235,8 @@ class parseJSON:
 
                 print 'Basari ile maskelendi -->', maskFilePathCanak, '\n'
 
-
-
-
-
-
-
                 #***********************************************************
-
+                os.system("RabbitMQReceive.py")
 
 
 
