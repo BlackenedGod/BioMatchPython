@@ -236,7 +236,7 @@ class parseJSON:
                 print 'Basari ile maskelendi -->', maskFilePathCanak, '\n'
 
                 #***********************************************************
-                os.system("RabbitMQReceive.py")
+                #os.system("RabbitMQReceive.py")
 
 
 
