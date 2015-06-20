@@ -209,11 +209,11 @@ class parseJSON:
                     #arrayD = cv2.normalize(arrayD, None).flatten()
                     #index[path2] = arrayD
 
-                    distanceTac = spatial.distance.chebyshev(arrayA, arrayC)
-                    distanceCanak = spatial.distance.chebyshev(arrayB, arrayD)
-                    print "ArrayA", arrayA
-                    print "TAC MESAFESI", distanceTac
-                    print "CANAK MESAFESI", distanceCanak
+                    distanceTac = spatial.distance.euclidean(arrayA, arrayC)
+                    distanceCanak = spatial.distance.euclidean(arrayB, arrayD)
+
+                    print "Cicegin, ", imagePathTac[:7], " cicege benzerligi : ", distanceTac/1000
+                    print "Cicegin, ", imagePathCanak[:7], " cicege benzerligi : ", distanceCanak/1000
                     #for (k, hist) in index.items():
                         #d = numpy.dist.euclidean(index[k], hist)
                         #results[k] = d
