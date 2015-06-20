@@ -186,7 +186,7 @@ class parseJSON:
                     print imagePathTac
                     #arrayA = cv2.calcHist([imageTacRGB], [0, 1, 2], None, [8, 8, 8], [0, 256, 0, 256, 0, 256])
                     arrayA = a.describe(imageTacRGB)
-                    arrayA = cv2.normalize(arrayA, None).flatten()
+                    #arrayA = cv2.normalize(arrayA, None).flatten()
                     #index[imagePathTac] = arrayA
 
 
@@ -194,19 +194,19 @@ class parseJSON:
                     print imagePathCanak
                     #arrayB = cv2.calcHist([imageCanakRGB], [0, 1, 2], None, [8, 8, 8], [0, 256, 0, 256, 0, 256])
                     arrayB = b.describe(imageCanakRGB)
-                    arrayB = cv2.normalize(arrayB, None).flatten()
+                    #arrayB = cv2.normalize(arrayB, None).flatten()
                     #index[imagePathCanak] = arrayB
 
                     imageTacToTest = cv2.imread(path1)
                     print path1
                     arrayC = x.describe(imageTacToTest)
-                    arrayC = cv2.normalize(arrayC, None).flatten()
+                    #arrayC = cv2.normalize(arrayC, None).flatten()
                     #index[path1] = arrayC
 
                     imageCanakToTest = cv2.imread(path2)
                     print path2
                     arrayD = y.describe(imageCanakToTest)
-                    arrayD = cv2.normalize(arrayD, None).flatten()
+                    #arrayD = cv2.normalize(arrayD, None).flatten()
                     #index[path2] = arrayD
 
                     distanceTac = spatial.distance.chebyshev(arrayA, arrayC)
