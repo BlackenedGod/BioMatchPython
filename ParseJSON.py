@@ -1,3 +1,4 @@
+from scipy import spatial
 import glob
 import json, httplib, urllib
 import datetime
@@ -208,7 +209,7 @@ class parseJSON:
                     arrayD = cv2.normalize(arrayD, None).flatten()
                     #index[path2] = arrayD
 
-                    distanceTac = numpy.dist.chebyshev(arrayA, arrayC)
+                    distanceTac = spatial.distance.chebyshev(arrayA, arrayC)
                     print distanceTac
 
                     #for (k, hist) in index.items():
