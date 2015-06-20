@@ -3,9 +3,8 @@ __author__ = 'altug'
 import logging
 logging.basicConfig()
 import pika
-import Main
 from ParseJSON import parseJSON
-from MaskingClass import maskingClass
+
 
 connection = pika.BlockingConnection(pika.ConnectionParameters('188.166.67.19'))
 
@@ -17,7 +16,7 @@ def callback(ch, method, properties, body):
     print " [x] Received %r" % body
     connection.close()
     #mainInstance = Main.Main()
-    retArray = parseJSON().downloadSpecificObject(body)
+    parseJSON().downloadSpecificObject(body)
     #maskingClass(retArray[0], retArray[1])
 
 
