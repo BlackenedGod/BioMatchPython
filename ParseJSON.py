@@ -165,39 +165,38 @@ class parseJSON:
                 time.sleep(2)
                 #***************************************TAC***************************
                 (_, new_mask) = cv2.threshold(blurTac, 0, 255, cv2.THRESH_BINARY+cv2.THRESH_OTSU)
-                '''a = RGBHistogram([8, 8, 8])
+                a = RGBHistogram([8, 8, 8])
                 b = RGBHistogram([8, 8, 8])
                 x = RGBHistogram([8, 8, 8])
-                y = RGBHistogram([8, 8, 8])'''
+                y = RGBHistogram([8, 8, 8])
 
                 for imagePathTac, imagePathCanak in zip(imagePathsTac, imagePathsCanak):
-
+                    i = 1
+                    counter = i + 1
                     imageTacRGB = cv2.imread(imagePathTac)
                     print imagePathTac
-                    arrayA = cv2.calcHist([imageTacRGB], [0, 1, 2], None, [8, 8, 8], [0, 256, 0, 256, 0, 256])
+                    #arrayA = cv2.calcHist([imageTacRGB], [0, 1, 2], None, [8, 8, 8], [0, 256, 0, 256, 0, 256])
+                    arrayA = a.describe(imageTacRGB)
                     arrayA = cv2.normalize(arrayA, None)
 
                     imageCanakRGB = cv2.imread(imagePathCanak)
                     print imagePathCanak
-                    arrayB = cv2.calcHist([imageCanakRGB], [0, 1, 2], None, [8, 8, 8], [0, 256, 0, 256, 0, 256])
+                    #arrayB = cv2.calcHist([imageCanakRGB], [0, 1, 2], None, [8, 8, 8], [0, 256, 0, 256, 0, 256])
+                    arrayB = b.describe(imageCanakRGB)
                     arrayB = cv2.normalize(arrayB, None)
 
                     imageTacToTest = cv2.imread(path1)
                     print path1
-                    arrayC = cv2.calcHist([imageTacToTest], [0, 1, 2], None, [8, 8, 8], [0, 256, 0, 256, 0, 256])
-                    arrayC = cv2.normalize(arrayC, None)
+
+                    arrayC = x.describe(imageTacToTest)
+                    arrayC = cv2.normalize(imageTacToTest, None)
 
                     imageCanakToTest = cv2.imread(path2)
                     print path2
-                    arrayD = cv2.calcHist([imageCanakToTest], [0, 1, 2], None, [8, 8, 8], [0, 256, 0, 256, 0, 256])
-                    arrayD = cv2.normalize(arrayD, None)
-
-                    comparisonTac = cv2.compareHist(arrayA, arrayC, cv2.HISTCMP_BHATTACHARYYA)
-                    comparisonCanak = cv2.compareHist(arrayB, arrayD, cv2.HISTCMP_BHATTACHARYYA)
-
-                    print "Tac karsilastirmasi : ", comparisonTac, " Canak karsilastirmasi : ", comparisonCanak
-                    '''c = sum(abs(arrayA - arrayC))
-                    d = sum(abs(arrayB - arrayD))'''
+                    arrayD = y.describe(imageCanakToTest)
+                    arrayD = cv2.normalize(imageCanakToTest, None)
+                    c = sum(abs(arrayA - arrayC))
+                    d = sum(abs(arrayB - arrayD))
 
                     print "Taclarin toplami : ", c, "\nCanaklarin toplami : ", d
                     '''print "Array A", arrayA
