@@ -10,7 +10,7 @@ connection = pika.BlockingConnection(pika.ConnectionParameters('188.166.67.19'))
 
 channel = connection.channel()
 
-channel.queue_declare(queue='objand')
+channel.queue_declare(queue='obj')
 
 def callback(ch, method, properties, body):
     print " [x] Received %r" % body
