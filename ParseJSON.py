@@ -186,34 +186,37 @@ class parseJSON:
                     #arrayA = cv2.calcHist([imageTacRGB], [0, 1, 2], None, [8, 8, 8], [0, 256, 0, 256, 0, 256])
                     arrayA = a.describe(imageTacRGB)
                     arrayA = cv2.normalize(arrayA, None).flatten()
-                    index[imagePathTac] = arrayA
+                    #index[imagePathTac] = arrayA
+
 
                     imageCanakRGB = cv2.imread(imagePathCanak)
                     print imagePathCanak
                     #arrayB = cv2.calcHist([imageCanakRGB], [0, 1, 2], None, [8, 8, 8], [0, 256, 0, 256, 0, 256])
                     arrayB = b.describe(imageCanakRGB)
                     arrayB = cv2.normalize(arrayB, None).flatten()
-                    index[imagePathCanak] = arrayB
+                    #index[imagePathCanak] = arrayB
 
                     imageTacToTest = cv2.imread(path1)
                     print path1
                     arrayC = x.describe(imageTacToTest)
                     arrayC = cv2.normalize(arrayC, None).flatten()
-                    index[path1] = arrayC
+                    #index[path1] = arrayC
 
                     imageCanakToTest = cv2.imread(path2)
                     print path2
                     arrayD = y.describe(imageCanakToTest)
                     arrayD = cv2.normalize(arrayD, None).flatten()
-                    index[path2] = arrayD
+                    #index[path2] = arrayD
 
+                    distanceTac = numpy.dist.chebyshev(arrayA, arrayC)
+                    print distanceTac
 
-                    for (k, hist) in index.items():
-                        d = numpy.dist.euclidean(index[k], hist)
-                        results[k] = d
+                    #for (k, hist) in index.items():
+                        #d = numpy.dist.euclidean(index[k], hist)
+                        #results[k] = d
 
-                        results = sorted([(v, k) for (k, v) in results.items()])
-                        print results[k]
+                        #results = sorted([(v, k) for (k, v) in results.items()])
+                        #print results[k]
 
                     print "Array A", arrayA
                     print "Array B", arrayB
@@ -222,7 +225,7 @@ class parseJSON:
 
 
 
-                maskFilePathTac = "MaskImg/"+"mask_tac_"+str(self.getNowTime())+".jpg"
+                '''maskFilePathTac = "MaskImg/"+"mask_tac_"+str(self.getNowTime())+".jpg"
                 print 'Basari ile maskelendi -->', maskFilePathTac, '\n'
                 #*********************************************************************
 
@@ -239,7 +242,7 @@ class parseJSON:
                 print 'Basari ile maskelendi -->', maskFilePathCanak, '\n'
 
                 #***********************************************************
-                #os.system("RabbitMQReceive.py")
+                #os.system("RabbitMQReceive.py")'''
 
 
 
