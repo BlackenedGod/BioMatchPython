@@ -9,7 +9,7 @@ import numpy
 from CalcDistance import CalcDistance
 from MaskingClass import maskingClass
 from RGBHistogram import RGBHistogram
-import RabbitMQReceive
+
 
 
 class parseJSON:
@@ -140,7 +140,7 @@ class parseJSON:
                 responseCanak = urllib.urlretrieve(urlInfoCanak, self.canakURLPath+"_"+self.dateTimePath+".jpg")
                 if(responseCanak != None):
                     print 'Canak Yaprak Indirildi .\n'
-                RabbitMQReceive.connection.close()
+                #RabbitMQReceive.connection.close()
                 #maskTacInstance = maskingClass(self.tacURLPath+"_"+self.dateTimePath+".jpg", self.canakURLPath+"_"+self.dateTimePath+".jpg")
                 path1 = self.tacURLPath+"_"+self.dateTimePath+".jpg"
                 path2 = self.canakURLPath+"_"+self.dateTimePath+".jpg"
