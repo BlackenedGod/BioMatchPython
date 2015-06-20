@@ -211,7 +211,7 @@ class parseJSON:
 
                     distanceTac = spatial.distance.chebyshev(arrayA, arrayC)
                     distanceCanak = spatial.distance.chebyshev(arrayB, arrayD)
-
+                    print "ArrayA", arrayA
                     print "TAC MESAFESI", distanceTac
                     print "CANAK MESAFESI", distanceCanak
                     #for (k, hist) in index.items():
