@@ -210,8 +210,10 @@ class parseJSON:
                     #index[path2] = arrayD
 
                     distanceTac = spatial.distance.chebyshev(arrayA, arrayC)
-                    print distanceTac
+                    distanceCanak = spatial.distance.chebyshev(arrayB, arrayD)
 
+                    print "TAC MESAFESI", distanceTac
+                    print "CANAK MESAFESI", distanceCanak
                     #for (k, hist) in index.items():
                         #d = numpy.dist.euclidean(index[k], hist)
                         #results[k] = d
@@ -219,10 +221,10 @@ class parseJSON:
                         #results = sorted([(v, k) for (k, v) in results.items()])
                         #print results[k]
 
-                    print "Array A", arrayA
+                    '''print "Array A", arrayA
                     print "Array B", arrayB
                     print "Array C", arrayC
-                    print "Array D", arrayD
+                    print "Array D", arrayD'''
 
 
 
