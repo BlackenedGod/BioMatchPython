@@ -121,6 +121,9 @@ class parseJSON:
             #maskingInstanceTac = maskingClass(maskFilePathTac, self.tacURLPath+dateTimePath+".jpg")
             #maskingInstanceCanak = maskingClass(maskFilePathCanak, self.canakURLPath+dateTimePath+".jpg")
 
+    def takeBody(self, body):
+        self.downloadSpecificObject(body)
+
     def downloadSpecificObject(self, objID):
 
         print 'Istek geldi bulunursa indirilecek.'
@@ -129,6 +132,7 @@ class parseJSON:
 
         for i in range(0, length):
             objectID = self.result[self.resultsString][i][self.objIDString]
+
             if objectID == objID:
                 urlInfoTac = self.result[self.resultsString][i][self.tacYaprakString][self.urlString]
                 urlInfoCanak = self.result[self.resultsString][i][self.canakYaprakString][self.urlString]
@@ -210,7 +214,6 @@ class parseJSON:
 
                         results = sorted([(v, k) for (k, v) in results.items()])
                         print results[k]
-
 
                     print "Array A", arrayA
                     print "Array B", arrayB
