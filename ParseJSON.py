@@ -212,10 +212,10 @@ class parseJSON:
                         print results[k]
 
 
-                    '''print "Array A", arrayA
+                    print "Array A", arrayA
                     print "Array B", arrayB
                     print "Array C", arrayC
-                    print "Array D", arrayD'''
+                    print "Array D", arrayD
 
 
 
